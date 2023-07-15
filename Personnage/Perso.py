@@ -1,28 +1,22 @@
+# import pygame as pg
 class Perso:
-    def __init__(self, largeurEcran, hauteurEcran,  nom='kirby',urlBase='img/sprite.png' , transparence=(0,0,0), positionInit=(0,0)):
 
-        self.nom = nom
-        self.urlBase = urlBase
-        self.transparence = transparence
-        self.positionInit = positionInit
+    def __init__(self, surface, xpos, ypos, step_x, step_y):
+        self.surface = surface
+        self.xpos=xpos
+        self.ypos=ypos
+        self.step_x=step_x
+        self.step_y = step_y
 
+    def deplacement(self, xpos=None, ypos=None, largeurEcran=None, hauteurEcran=None, step_x=None,
+                    step_y=None):
 
-    def creerPerso(self):
-        persoInstance = self.pygame.image.load(self.urlBase).convert
-        return persoInstance
-    def positionDepart(self,perso, x, y):
-        self.xpos = x
-        self.ypos = y
-    def mouvements(self):
-        self.xpos += x_step
-        self.ypos += y_step
+        if xpos > largeurEcran - 96 or xpos < 0:
+            step_x = -step_x
+            print(step_x)
+        if ypos > hauteurEcran - 90 or ypos < 0:
+            step_y = -step_y
+        xpos += step_x
+        ypos += step_y
+        return (xpos, ypos, step_x, step_y)
 
-    def limiteMouvements(self):
-        pass
-
-    def transparence(self):
-        self.setcolorkey((self.transparence()))
-
-
-def creerPerso(largeurEcran, hauteurEcran, param):
-    return None
